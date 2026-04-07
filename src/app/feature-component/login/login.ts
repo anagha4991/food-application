@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ButtonModule,PasswordModule,InputTextModule,IftaLabelModule,ReactiveFormsModule ],
+  imports: [ButtonModule, PasswordModule, InputTextModule, IftaLabelModule, ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -26,6 +26,7 @@ export class Login {
     private router: Router
   ) {
     this.form = this.fb.group({
+      name: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['']
@@ -40,7 +41,7 @@ export class Login {
       return;
     }
 
-    const { name,email, password, confirmPassword } = this.form.value;
+    const { name, email, password, confirmPassword } = this.form.value;
 
     this.loading.set(true);
 
@@ -73,16 +74,23 @@ export class Login {
         return;
       }
 
-      this.auth.register(name,email, password).subscribe({
+      this.auth.register(name, email, password).subscribe({
         next: () => {
           this.loading.set(false);
           this.isLogin.set(true);
           this.form.reset();
           this.errorMsg.set('Registered. Please login.');
         },
-        error: () => {
+        error: (err) => {
           this.loading.set(false);
-          this.errorMsg.set('Registration failed');
+          console.error('REGISTER ERROR:', err);
+
+          const msg =
+            err?.error?.message ||
+            err?.message ||
+            'Registration failed';
+
+          this.errorMsg.set(msg);
         }
       });
     }

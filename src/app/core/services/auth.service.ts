@@ -23,9 +23,9 @@ export class AuthService {
   }
 register(name:string, email: string, password: string) {
   return this.http.post(`${API}/users`, {
+    name,
     email,
     password,
-    name,
     avatar: 'https://i.pravatar.cc/150'
   });
 }
