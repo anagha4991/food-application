@@ -12,13 +12,13 @@ This project is a food ordering web application built using Angular. It demonstr
 * **Language:** TypeScript
 * **Styling:** Tailwind CSS
 * **UI Components:** PrimeNG
-* **Reactive Programming:** RxJS
+*
 
 ---
 
 ## Project Structure
 
-```
+
 src/app/
 │
 ├── core/
@@ -33,29 +33,29 @@ src/app/
 │
 ├── layouts/
 │   ├── header/        # Header component
-│   ├── footer/        # Footer component
 │
 ├── app.routes.ts      # Routing configuration
 ├── app.config.ts      # App-level configuration
-```
+
 
 ---
 
 ## Core Module Explanation
 
-The `core/` directory contains global, reusable logic:
+The core/ directory contains global, reusable logic:
 
 * **Services**
 
-  * `auth.service.ts` → Handles authentication logic
-  * `cart.service.ts` → Manages cart state
-  * `menu.service.ts` → Handles menu data
-  * `storage.service.ts` → Local/session storage abstraction
-  * `i18n.service.ts` → Language and localization handling
+  * auth.service.ts → Handles authentication logic
+* auth.guard.ts → Handles unauthorised route 
+  * cart.service.ts → Manages cart state
+  * menu.service.ts → Handles menu data
+  * storage.service.ts → Local/session storage abstraction
+  * i18n.service.ts → Language and localization handling
 
 * **Helpers**
 
-  * `auth.interceptor.ts` → Intercepts HTTP requests (e.g., attach tokens)
+  * auth.interceptor.ts → Intercepts HTTP requests (e.g., attach tokens)
 
 * **Models**
 
@@ -65,7 +65,7 @@ The `core/` directory contains global, reusable logic:
 
 ## Feature Components
 
-Located under `feature-component/`, each folder represents a functional feature:
+Located under feature-component/, each folder represents a functional feature:
 
 * **menu/**
 
@@ -75,7 +75,7 @@ Located under `feature-component/`, each folder represents a functional feature:
 * **cart/**
 
   * Manages selected items
-  * Handles add/remove/update logic
+  
 
 * **login/**
 
@@ -86,14 +86,11 @@ Located under `feature-component/`, each folder represents a functional feature:
 
 ## Layout Components
 
-The `layouts/` folder contains reusable UI structure:
+The layouts/ folder contains reusable UI structure:
 
 * **header/**
 
   * Navigation and branding
-* **footer/**
-
-  * Footer content and links
 
 These components are shared across multiple pages.
 
@@ -103,9 +100,9 @@ These components are shared across multiple pages.
 
 Routing is defined in:
 
-```
+
 app.routes.ts
-```
+
 
 Responsibilities:
 
@@ -122,52 +119,10 @@ Responsibilities:
 * HTTP request interception
 * Multi-language support (i18n)
 * Responsive UI with Tailwind CSS
-* Rich UI components via PrimeNG
-
----
-
-## Design Decisions
-
-### 1. Service-Based State Management
-
-State (e.g., cart data) is managed using Angular services instead of a global state library.
-
-**Reason:**
-
-* Simpler implementation
-* Suitable for small to medium applications
-
----
-
-### 2. Feature-Based Folder Structure
-
-Each feature is isolated into its own folder.
-
-**Benefits:**
-
-* Improves readability
-* Easier to scale and maintain
-
----
-
-### 3. Layout Separation
-
-Header and footer are separated into a `layouts/` folder.
-
-**Reason:**
-
-* Avoid duplication
-* Maintain consistent UI structure
-
----
-
-### 4. Tailwind + PrimeNG Combination
-
-* Tailwind → Utility-first styling
-* PrimeNG → Prebuilt UI components
 
 
 ---
+
 
 ## Setup Instructions
 
@@ -182,9 +137,9 @@ Header and footer are separated into a `layouts/` folder.
 
 Install Angular CLI globally (if not installed):
 
-```bash
+bash
 npm install -g @angular/cli
-```
+
 
 ---
 
@@ -192,37 +147,37 @@ npm install -g @angular/cli
 
 Extract the project and run:
 
-```bash
+bash
 npm install
-```
+
 
 ---
 
 ### Run the Application
 
-```bash
+bash
 ng serve
-```
+
 
 Open in browser:
 
-```
+
 http://localhost:4200
-```
+
 
 ---
 
 ### Build for Production
 
-```bash
+bash
 ng build
-```
+
 
 Build output will be generated in:
 
-```
-dist/
-```
+
+dist/food-application/browser
+
 
 ---
 

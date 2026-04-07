@@ -12,8 +12,8 @@ import { I18nService } from '../../core/services/i18n.service';
 export class Cart {
   private cartService = inject(CartService);
  protected readonly i18n = inject(I18nService);
-  items = this.cartService.items;
-  totalAmount = this.cartService.totalAmount;
+   items = this.cartService.items;
+totalCount = this.cartService.totalCount;
 
   updateQuantity = this.cartService.updateQuantity.bind(this.cartService);
 }

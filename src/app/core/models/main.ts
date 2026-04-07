@@ -30,12 +30,3 @@ export interface AddonCategory {
   addon_selection: number;
   addons: Dish[];
 }
-
-
-
-// export type Language = 'en' | 'ar';
-
-// export interface UserProfile {
-//   username: string;
-//   password: string;
-// }

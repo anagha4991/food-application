@@ -140,7 +140,7 @@ export class I18nService {
   isArabic(): boolean {
     return this.languageSignal() === 'ar';
   }
-
+//html changes
   private applyDirection(lang: Language) {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
