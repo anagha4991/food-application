@@ -1,0 +1,75 @@
+<div class="min-h-screen bg-slate-50 p-6 font-sans">
+    <div class="mx-auto max-w-6xl">
+
+        <h1 class="text-2xl font-bold mb-6">Your Cart</h1>
+
+        @if (items().length > 0) {
+        <div class="space-y-4">
+            @for (item of items(); track item.dish.dish_id) {
+            <div
+                class="flex items-center gap-4 bg-white p-4 rounded-3xl shadow-sm ring-1 ring-slate-100 transition-all hover:shadow-md">
+
+                <div class="h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-slate-100">
+                    <img [src]="item.dish.dish_image" [alt]="item.dish.dish_name" class="h-full w-full object-cover" />
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-bold text-slate-900 truncate">{{ item.dish.dish_name }}</h3>
+                    <p class="text-xs font-medium text-slate-500">
+                        {{ item.dish.dish_currency }} {{ item.dish.dish_price }}
+                    </p>
+                    <p class="text-[10px] uppercase tracking-wider font-bold text-green-600 mt-1">
+                        Subtotal: {{ item.dish.dish_currency }} {{ (item.quantity * item.dish.dish_price).toFixed(2) }}
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3 bg-slate-100 rounded-full p-1 ring-1 ring-slate-200">
+                    <button (click)="updateQuantity(item.dish, -1)"
+                        class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-slate-900 shadow-sm hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer font-bold">
+                        −
+                    </button>
+
+                    <span class="w-4 text-center text-sm font-black text-slate-900 select-none">
+                        {{ item.quantity }}
+                    </span>
+
+                    <button (click)="updateQuantity(item.dish, 1)"
+                        class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-slate-900 shadow-sm hover:bg-green-50 hover:text-green-600 transition-colors cursor-pointer font-bold">
+                        +
+                    </button>
+                </div>
+            </div>
+            }
+            <button [routerLink]="['/menu']"
+                class="w-full h-12 flex items-center justify-center rounded-full bg-amber-500 text-white shadow-sm hover:bg-red-50 hover:text-amber-500 transition-colors cursor-pointer font-bold">
+                Back To Menu
+            </button>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-dashed border-slate-300">
+            <div class="flex justify-between items-end">
+                <span class="text-slate-500 font-medium">Total Amount</span>
+                <div class="text-right">
+                    <p class="text-3xl font-black text-slate-900">
+                        <span class="text-sm font-bold text-slate-400 mr-1">SAR</span>{{ totalAmount().toFixed(2) }}
+                    </p>
+                </div>
+            </div>
+
+            <button
+                class="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all active:scale-[0.98] cursor-pointer shadow-lg shadow-slate-200">
+                Proceed to Checkout
+            </button>
+        </div>
+
+        } @else {
+        <div class="flex flex-col items-center justify-center py-24 text-center">
+            <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-slate-400 text-4xl">shopping_basket</span>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900">Your cart is empty</h2>
+            <p class="text-sm text-slate-500 mt-1">Add some delicious items to get started!</p>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<header class="sticky top-0 z-10 bg-white shadow-xs">
+    <div class="mx-auto w-full max-w-(--container-max-width) px-4">
+        <nav class="flex flex-col justify-between py-2 bg-white md:flex-row md:items-center">
+
+            <div class="flex items-center justify-between">
+                <div class="py-2 cursor-pointer">
+                    <img src="assets/images/restaurant-logo-5-png.png" alt="Site Logo" class="h-12" />
+                </div>
+                <button class="flex items-center p-2 text-white  md:hidden bg-gradient-amber">
+                    <i class="pi pi-bars"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col gap-8 mt-3 md:flex md:flex-row md:ml-auto md:mt-0 max-md:gap-2">
+
+
+                <div class="flex flex-col gap-1 md:flex-row md:gap-2 max-md:gap-y-2">
+                    <div
+                        class="flex items-center justify-center h-12 p-2 font-semibold   cursor-pointer  text-gray-900 hover:text-amber-500">
+                        {{ i18n.t('header.nav') }}
+                    </div>
+                    <div [routerLink]="['/cart']"
+                        class="flex items-center justify-center h-12 p-2 font-semibold   cursor-pointer  text-gray-900 hover:text-amber-500">
+                        <div class="relative  bg-white p-3   cursor-pointer hover:bg-slate-50">
+                            <i class="pi pi-shopping-cart"></i>
+                            <span
+                                class="absolute -top-1 -right-1 flex rounded-full h-5 w-5 items-center justify-center -full bg-orange-500 text-[10px] font-bold text-white">{{cartCount()}}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-12 p-2 font-semibold    text-gray-900">
+                        <select [value]="i18n.language()" (change)="i18n.setLanguage($any($event.target).value)"
+                            class="bg-transparent outline-none cursor-pointer">
+
+                            <option value="en">English</option>
+                            <option value="ar">العربية</option>
+
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-center h-12 p-2 font-semibold cursor-pointer text-gray-900 hover:text-amber-500"
+                        >
+
+                        <div class="flex items-center gap-1">
+                            <!-- {{auth.user() | json}} -->
+                            <!-- <i class="pi pi-user"></i> -->
+
+                            @if (!auth.isAuthenticated()) {
+                            <!-- <span>{{ i18n.t('auth.login') }}</span> -->
+                            } @else {
+                                
+                            
+                            <span (click)="handleAuthClick()" class="text-amber-500">{{ i18n.t('auth.logout') }}</span>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

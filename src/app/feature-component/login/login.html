@@ -1,0 +1,131 @@
+<div class="flex min-h-screen items-center justify-center bg-gray-50 p-4 font-sans text-gray-900 md:p-0">
+    <div class="flex w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl">
+
+        <!-- LEFT -->
+        <div class="w-full p-8 md:w-1/2 lg:p-16">
+
+            <!-- Logo -->
+            <div class="mb-10 flex items-center gap-2">
+                <div class="h-8 w-8 rounded-lg bg-amber-600"></div>
+                <span class="text-xl font-bold tracking-tight">UniNesto</span>
+            </div>
+
+            <!-- Dynamic Heading -->
+            <h2 class="text-3xl font-extrabold tracking-tight">
+                {{ isLogin() ? 'Welcome back' : 'Create account' }}
+            </h2>
+
+            <p class="mt-2 text-sm text-gray-500">
+                {{ isLogin() ? 'Please enter your details to sign in.' : 'Fill details to register.' }}
+            </p>
+
+            <!-- LOGIN -->
+            <form [formGroup]="form" class="mt-8 space-y-5">
+
+                <!-- ERROR -->
+                @if (errorMsg()) {
+                <div class="text-red-500 text-sm">
+                    {{ errorMsg() }}
+                </div>
+                }
+
+                <!-- NAME -->
+                @if (!isLogin()) {
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" formControlName="name" class="mt-1 w-full rounded-lg border px-4 py-3"
+                        [class.border-red-500]="name?.invalid && name?.touched" placeholder="eg:John">
+
+                    @if (name?.invalid && name?.touched) {
+                    <p class="text-red-500 text-xs mt-1">
+                        Valid email required
+                    </p>
+                    }
+                </div>}
+                <!-- EMAIL -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" formControlName="email" class="mt-1 w-full rounded-lg border px-4 py-3"
+                        [class.border-red-500]="email?.invalid && email?.touched" placeholder="you@example.com">
+
+                    @if (email?.invalid && email?.touched) {
+                    <p class="text-red-500 text-xs mt-1">
+                        Valid email required
+                    </p>
+                    }
+                </div>
+
+                <!-- PASSWORD -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" formControlName="password" class="mt-1 w-full rounded-lg border px-4 py-3"
+                        [class.border-red-500]="password?.invalid && password?.touched" placeholder="••••••••">
+
+                    @if (password?.invalid && password?.touched) {
+                    <p class="text-red-500 text-xs mt-1">
+                        Minimum 4 characters required
+                    </p>
+                    }
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+                @if (!isLogin()) {
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword"
+                        class="mt-1 w-full rounded-lg border px-4 py-3" placeholder="••••••••">
+                </div>
+                }
+
+                <!-- BUTTON -->
+                <button type="button" (click)="submit()" [disabled]="loading()"
+                    class="w-full bg-amber-600 text-white py-3 rounded-lg">
+
+                    @if (loading()) {
+                    Processing...
+                    } @else {
+                    {{ isLogin() ? 'Sign in' : 'Register' }}
+                    }
+                </button>
+
+            </form>
+
+
+            <!-- TOGGLE TEXT -->
+            <p class="mt-10 text-center text-sm text-gray-500">
+
+                @if (isLogin()) {
+                Don't have an account?
+                <span class="font-semibold text-amber-600 cursor-pointer" (click)="showRegister()">
+                    Register here
+                </span>
+                } @else {
+                Already have an account?
+                <span class="font-semibold text-amber-600 cursor-pointer" (click)="showLogin()">
+                    Login here
+                </span>
+                }
+
+            </p>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="hidden w-1/2 bg-amber-600 p-12 md:flex flex-col justify-center text-white relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-amber-500 opacity-50"></div>
+            <div class="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-amber-700 opacity-50"></div>
+
+            <div class="relative z-10">
+                <blockquote class="text-2xl italic">
+                    "Crave it. Click it. Eat it"
+                </blockquote>
+                <div class="mt-6">
+                    <p class="font-bold">The fastest way to get your favorite local flavors delivered straight to your
+                        doorstep. No fuss, just food.</p>
+                    <p class="text-amber-200 text-sm">Start Your Order</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

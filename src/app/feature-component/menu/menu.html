@@ -1,0 +1,114 @@
+<div class="min-h-screen bg-slate-50 p-6 font-sans">
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mb-8 flex items-center justify-between">
+      <div>
+        <h1 class="text-4xl font-black tracking-tight text-slate-900">
+          {{ restaurantName() }}
+        </h1>
+       
+
+        <p class="text-slate-500">{{ i18n.t('header.tagline') }}</p>
+      </div>
+    </header>
+    <div class="flex items-center gap-2 mb-8 p-1 bg-slate-100 w-fit rounded-2xl ring-1 ring-slate-200">
+      <button (click)="filter.set('all')"
+        [class]="filter() === 'all' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'"
+        class="px-5 py-2 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer select-none">
+        {{ i18n.t('menu.all') }}
+      </button>
+
+      <button (click)="filter.set('veg')"
+        [class]="filter() === 'veg' ? 'bg-green-600 text-white shadow-md' : 'text-slate-500 hover:text-green-600'"
+        class="flex items-center gap-2 px-5 py-2 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer select-none">
+        <span class="w-2 h-2 rounded-full bg-current"></span>
+        {{ i18n.t('menu.vegOnly') }}
+      </button>
+
+      <button (click)="filter.set('nonveg')"
+        [class]="filter() === 'nonveg' ? 'bg-red-600 text-white shadow-md' : 'text-slate-500 hover:text-red-600'"
+        class="flex items-center gap-2 px-5 py-2 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer select-none">
+        <span class="w-2 h-2 rounded-full bg-current"></span>
+         {{ i18n.t('menu.nonVegOnly') }}
+      </button>
+    </div>
+    <p-tabs [(value)]="selectedCategoryIdValue">
+      <p-tablist
+        class="flex gap-4 overflow-x-auto border-b border-slate-200 no-scrollbar whitespace-nowrap scroll-smooth">
+        @for (cat of categories(); track cat.menu_category_id) {
+        <p-tab [value]="cat.menu_category_id"
+          class="cursor-pointer whitespace-nowrap px-4 py-4 text-sm font-bold text-slate-500 transition-all aria-selected:border-b-2 aria-selected:border-orange-500 aria-selected:text-orange-600">
+          {{ cat.menu_category }}
+        </p-tab>
+        }
+      </p-tablist>
+
+      <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        @for (dish of filteredDishes(); track dish.dish_id) {
+        <div
+          class="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:shadow-xl">
+
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <div class="flex items-start justify-between">
+                <h3 class="text-lg font-bold text-slate-900 leading-tight">{{ dish.dish_name }}</h3>
+                <span [class]="dish.dish_Type === 2 ? 'border-green-600 text-green-600' : 'border-red-600 text-red-600'"
+                  class="flex h-4 w-4 shrink-0 items-center justify-center border-2 p-2 text-[6px]">
+                  <i class="pi pi-circle-on text-xs"></i>
+                </span>
+              </div>
+
+              <p class="mt-1 font-mono font-bold text-slate-700 text-sm">
+                {{ dish.dish_currency }} {{ dish.dish_price }}
+              </p>
+
+              <p class="mt-3 text-xs leading-relaxed text-slate-500 line-clamp-2">
+                {{ dish.dish_description }}
+              </p>
+              @if ((dish.addonCat?.length ?? 0) > 0) {
+              <p class="mt-3 text-base leading-relaxed text-red-500 line-clamp-2">Customization available</p>
+              }
+            </div>
+
+            <div class="h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-slate-100">
+              <img [src]="dish.dish_image" [alt]="dish.dish_name"
+                class="h-full w-full object-cover transition-transform group-hover:scale-110">
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between border-t border-slate-50 pt-4">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+              {{ dish.dish_calories }} kcal
+            </span>
+
+            <div class="flex h-10 items-center">
+              <div class="flex h-full items-center gap-4 rounded-full bg-green-600 px-3 text-white shadow-md">
+                <button (click)="updateQuantity(dish, -1)"
+                  class="flex items-center justify-center w-6 h-6 text-xl font-bold hover:bg-white/20 rounded-full transition-colors cursor-pointer">
+                  <i class="pi pi-minus"></i>
+                </button>
+
+                <span class="w-4 text-center text-sm font-black select-none">
+                  {{ getQuantity(dish.dish_id)() }}
+                </span>
+
+                <button (click)="updateQuantity(dish, 1)"
+                  class="flex items-center justify-center w-6 h-6 text-xl font-bold hover:bg-white/20 rounded-full transition-colors cursor-pointer">
+                  <i class="pi pi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        } @empty {
+        <div class="col-span-full py-20 text-center">
+          <div class="mx-auto mb-4 h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center">
+            <span class="material-symbols-outlined text-slate-400">restaurant</span>
+          </div>
+          <p class="font-medium text-slate-400">No dishes found in this category.</p>
+        </div>
+        }
+      </div>
+    </p-tabs>
+  </div>
+</div>

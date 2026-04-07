@@ -1,0 +1,118 @@
+[
+  {
+    "restaurant_id": "1010000001",
+    "restaurant_name": "UNI Resto Cafe",
+    "branch_name": "Doha",
+    "table_menu_list": [
+      {
+        "menu_category": "Salads and Soup",
+        "menu_category_id": "11",
+        "category_dishes": [
+          {
+            "dish_id": "100000001",
+            "dish_name": "Spinach Salad",
+            "dish_price": 7.95,
+            "dish_image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 15,
+            "dish_description": "Fresh spinach, mushrooms, and hard-boiled egg served with warm bacon vinaigrette.",
+            "dish_Availability": true,
+            "dish_Type": 2,
+            "addonCat": [
+              {
+                "addon_category": "Spicy/Non-Spicy",
+                "addon_category_id": "104",
+                "addon_selection": 0,
+                "addons": [
+                  {
+                    "dish_id": "100000032",
+                    "dish_name": "Non Spicy",
+                    "dish_price": 0,
+                    "dish_image": "",
+                    "dish_currency": "SAR",
+                    "dish_calories": 0,
+                    "dish_description": "Mild version",
+                    "dish_Availability": true,
+                    "dish_Type": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dish_id": "100000003",
+            "dish_name": "Traditional New England Seafood Chowder",
+            "dish_price": 12,
+            "dish_image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 30,
+            "dish_description": "With clams, scallops, and shrimp.",
+            "dish_Availability": true,
+            "dish_Type": 1,
+            "addonCat": []
+          },
+          {
+            "dish_id": "100000004",
+            "dish_name": "Salad Bar Soup",
+            "dish_price": 5,
+            "dish_image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 30,
+            "dish_description": "Flour mixed with fresh green leafy vegetables.",
+            "dish_Availability": true,
+            "dish_Type": 2,
+            "addonCat": []
+          }
+        ]
+      },
+      {
+        "menu_category": "From The Barnyard",
+        "menu_category_id": "12",
+        "category_dishes": [
+          {
+            "dish_id": "100000005",
+            "dish_name": "Chicken Soup",
+            "dish_price": 14.89,
+            "dish_image": "https://images.unsplash.com/photo-1608500218808-20c7d2c8f172?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 30,
+            "dish_description": "Fresh home-made chicken soup.",
+            "dish_Availability": true,
+            "dish_Type": 1,
+            "addonCat": []
+          },
+          {
+            "dish_id": "100000029",
+            "dish_name": "Tacos",
+            "dish_price": 25,
+            "dish_image": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 225,
+            "dish_description": "Mexican street tacos.",
+            "dish_Availability": true,
+            "dish_Type": 3,
+            "addonCat": []
+          }
+        ]
+      },
+      {
+        "menu_category": "From The Sea",
+        "menu_category_id": "13",
+        "category_dishes": [
+          {
+            "dish_id": "100000041",
+            "dish_name": "Grilled Salmon",
+            "dish_price": 32,
+            "dish_image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=500&q=60",
+            "dish_currency": "SAR",
+            "dish_calories": 180,
+            "dish_description": "Grilled salmon with lemon butter sauce.",
+            "dish_Availability": true,
+            "dish_Type": 1,
+            "addonCat": []
+          }
+        ]
+      }
+    ]
+  }
+]
