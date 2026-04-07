@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-slate-50 p-6 font-sans">
     <div class="mx-auto max-w-6xl">
 
-        <h1 class="text-2xl font-bold mb-6">Your Cart</h1>
+        <h1 class="text-2xl font-bold mb-6">{{ i18n.t('cart.title') }}</h1>
 
         @if (items().length > 0) {
         <div class="space-y-4">
@@ -42,33 +42,23 @@
             }
             <button [routerLink]="['/menu']"
                 class="w-full h-12 flex items-center justify-center rounded-full bg-amber-500 text-white shadow-sm hover:bg-red-50 hover:text-amber-500 transition-colors cursor-pointer font-bold">
-                Back To Menu
+                  {{i18n.t('common.backToMenu')}}
             </button>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-dashed border-slate-300">
-            <div class="flex justify-between items-end">
-                <span class="text-slate-500 font-medium">Total Amount</span>
-                <div class="text-right">
-                    <p class="text-3xl font-black text-slate-900">
-                        <span class="text-sm font-bold text-slate-400 mr-1">SAR</span>{{ totalAmount().toFixed(2) }}
-                    </p>
-                </div>
-            </div>
 
-            <button
-                class="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all active:scale-[0.98] cursor-pointer shadow-lg shadow-slate-200">
-                Proceed to Checkout
-            </button>
-        </div>
 
         } @else {
         <div class="flex flex-col items-center justify-center py-24 text-center">
             <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-slate-400 text-4xl">shopping_basket</span>
+                <span class="pi pi-shopping-cart text-slate-400 text-8xl"></span>
             </div>
-            <h2 class="text-xl font-bold text-slate-900">Your cart is empty</h2>
-            <p class="text-sm text-slate-500 mt-1">Add some delicious items to get started!</p>
+            <h2 class="text-xl font-bold text-slate-900"> {{ i18n.t('cart.empty') }}</h2>
+            <p class="text-sm text-slate-500 mt-1">{{ i18n.t('cart.tagline') }}</p>
+            <button [routerLink]="['/menu']"
+                class=" mt-2 w-50 h-12 flex items-center justify-center rounded-full bg-amber-500 text-white shadow-sm hover:bg-red-50 hover:text-amber-500 transition-colors cursor-pointer font-bold">
+                 {{i18n.t('common.backToMenu')}}
+            </button>
         </div>
         }
     </div>

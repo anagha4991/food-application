@@ -14,6 +14,7 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './header.css',
 })
 export class Header {
+  isMenuOpen = false;
   private cartService = inject(CartService);
   auth = inject(AuthService);
   router = inject(Router);
@@ -27,5 +28,8 @@ export class Header {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

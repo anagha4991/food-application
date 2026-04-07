@@ -22,8 +22,9 @@ en: {
     },
 
     cart: {
-      title: 'Cart',
+      title: 'Your Cart',
       empty: 'Your cart is empty',
+      tagline: 'Add some delicious items to get started!',
       total: 'Total',
       items: 'items'
     },
@@ -44,7 +45,8 @@ en: {
     common: {
       add: 'Add',
       language: 'Language',
-      backToMenu: 'Back to menu'
+      backToMenu: 'Back to menu',
+      proceed: 'Proceed to checkout'
     }
   },
 
@@ -67,6 +69,7 @@ en: {
     cart: {
       title: 'السلة',
       empty: 'السلة فارغة',
+      tagline:'أضف بعض الأصناف اللذيذة للبدء!',
       total: 'الإجمالي',
       items: 'عناصر'
     },
@@ -87,7 +90,8 @@ en: {
     common: {
       add: 'إضافة',
       language: 'اللغة',
-      backToMenu: 'العودة للقائمة'
+      backToMenu: 'العودة للقائمة',
+      proceed:'انتقل إلى صفحة الدفع'
     }
   }
 } as const;
